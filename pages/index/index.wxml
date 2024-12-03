@@ -1,0 +1,38 @@
+<view class="container">
+  <!-- 顶部海鸥汽车图片 -->
+  <image class="banner" src="/assets/images/seagull-car.png" mode="aspectFill"/>
+  
+  <!-- 轮播图 -->
+  <swiper class="swiper" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <image src="{{item.image}}" mode="aspectFill"/>
+    </swiper-item>
+  </swiper>
+  
+  <!-- 快捷工具栏 -->
+  <view class="quick-tools">
+    <view class="tool-item" wx:for="{{quickTools}}" wx:key="id" bindtap="navigateToTool" data-url="{{item.url}}">
+      <image src="{{item.icon}}"/>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  
+  <!-- 在原有代码基础上添加 -->
+  <view class="car-model-container">
+    <view class="car-viewer" 
+          bindtouchstart="touchStart" 
+          bindtouchmove="touchMove" 
+          bindtouchend="touchEnd">
+      <image class="car-image" 
+             src="{{carImages[currentImageIndex]}}" 
+             mode="aspectFit"/>
+    </view>
+    <!-- 可选的控制按钮 -->
+    <view class="control-buttons">
+      <view class="rotate-hint">
+        <image src="/assets/icons/rotate.png" mode="aspectFit"/>
+        <text>左右滑动旋转车辆</text>
+      </view>
+    </view>
+  </view>
+</view> 

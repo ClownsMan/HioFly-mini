@@ -1,0 +1,25 @@
+<view class="container">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
+       markers="{{markers}}" scale="14" show-location="true"
+       style="width: 100%; height: calc(100vh - 180px);">
+  </map>
+
+  <view class="search-bar">
+    <input type="text" placeholder="搜索充电站" bindinput="onSearchInput"/>
+    <button bindtap="searchNearby" class="search-btn">搜索附近</button>
+  </view>
+
+  <scroll-view scroll-y class="station-list" wx:if="{{stations.length > 0}}">
+    <view class="station-item" wx:for="{{stations}}" wx:key="id" bindtap="selectStation" data-station="{{item}}">
+      <view class="station-info">
+        <text class="name">{{item.name}}</text>
+        <text class="address">{{item.address}}</text>
+        <text class="distance">{{item.distance}}km</text>
+      </view>
+      <view class="status">
+        <text class="available">可用{{item.availableCount}}/总{{item.totalCount}}</text>
+        <text class="price">￥{{item.price}}/度</text>
+      </view>
+    </view>
+  </scroll-view>
+</view> 

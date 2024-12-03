@@ -1,0 +1,96 @@
+<!--pages/maintenance/maintenance.wxml-->
+<view class="container">
+  <!-- 车辆信息 -->
+  <view class="car-info" wx:if="{{car}}">
+    <image class="car-image" src="{{car.image}}" mode="aspectFit"/>
+    <view class="car-detail">
+      <text class="car-name">{{car.brand}} {{car.name}}</text>
+      <text class="plate-number">{{car.plateNumber}}</text>
+      <text class="mileage">当前里程：{{car.mileage}}km</text>
+    </view>
+  </view>
+
+  <!-- 保养提醒 -->
+  <view class="maintenance-alert" wx:if="{{nextMaintenance}}">
+    <view class="alert-header">
+      <text class="title">下次保养提醒</text>
+      <text class="date">{{nextMaintenance.date}}</text>
+    </view>
+    <view class="alert-content">
+      <text class="desc">距离下次保养还有 {{nextMaintenance.remainDays}} 天</text>
+      <text class="mileage">或剩余 {{nextMaintenance.remainMileage}}km</text>
+    </view>
+  </view>
+
+  <!-- 保养记录 -->
+  <view class="maintenance-records">
+    <view class="section-header">
+      <text>保养记录</text>
+      <button class="add-btn" bindtap="addRecord">添加记录</button>
+    </view>
+    
+    <view class="record-list">
+      <view class="record-item" wx:for="{{records}}" wx:key="id">
+        <view class="record-date">
+          <text class="date">{{item.date}}</text>
+          <text class="mileage">{{item.mileage}}km</text>
+        </view>
+        <view class="record-content">
+          <view class="service-item" wx:for="{{item.services}}" wx:key="name" wx:for-item="service">
+            <text class="service-name">{{service.name}}</text>
+            <text class="service-price">¥{{service.price}}</text>
+          </view>
+          <view class="record-total">
+            <text>合计：</text>
+            <text class="total-price">¥{{item.totalPrice}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加记录弹窗 -->
+  <view class="add-record-modal" wx:if="{{showAddRecord}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text>添加保养记录</text>
+        <image src="/assets/icons/close.png" bindtap="hideAddRecord"/>
+      </view>
+      
+      <view class="form-item">
+        <text class="label">保养日期</text>
+        <picker mode="date" value="{{newRecord.date}}" bindchange="onDateChange">
+          <view class="picker-wrapper">
+            <text>{{newRecord.date || '请选择日期'}}</text>
+            <image src="/assets/icons/arrow-right.png"/>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="label">保养里程</text>
+        <input type="digit" value="{{newRecord.mileage}}" 
+               bindinput="onMileageInput" placeholder="请输入保养时的里程数"/>
+      </view>
+
+      <view class="service-list">
+        <view class="service-item" wx:for="{{newRecord.services}}" wx:key="index">
+          <input class="service-name" placeholder="项目名称" 
+                 value="{{item.name}}" data-index="{{index}}" 
+                 bindinput="onServiceNameInput"/>
+          <input class="service-price" type="digit" placeholder="金额" 
+                 value="{{item.price}}" data-index="{{index}}" 
+                 bindinput="onServicePriceInput"/>
+          <image class="delete-btn" src="/assets/icons/delete.png" 
+                 data-index="{{index}}" bindtap="deleteService"/>
+        </view>
+        <button class="add-service-btn" bindtap="addService">添加项目</button>
+      </view>
+
+      <view class="modal-buttons">
+        <button class="cancel-btn" bindtap="hideAddRecord">取消</button>
+        <button class="confirm-btn" bindtap="saveRecord">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

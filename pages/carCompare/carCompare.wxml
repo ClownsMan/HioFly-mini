@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 车型选择区域 -->
+  <view class="car-select-area">
+    <view class="car-slot {{leftCar ? 'has-car' : ''}}" bindtap="selectCar" data-side="left">
+      <block wx:if="{{leftCar}}">
+        <image class="car-image" src="{{leftCar.image}}" mode="aspectFit"/>
+        <text class="car-name">{{leftCar.name}}</text>
+      </block>
+      <text wx:else class="placeholder">点击选择车型</text>
+    </view>
+    
+    <view class="vs-icon">VS</view>
+    
+    <view class="car-slot {{rightCar ? 'has-car' : ''}}" bindtap="selectCar" data-side="right">
+      <block wx:if="{{rightCar}}">
+        <image class="car-image" src="{{rightCar.image}}" mode="aspectFit"/>
+        <text class="car-name">{{rightCar.name}}</text>
+      </block>
+      <text wx:else class="placeholder">点击选择车型</text>
+    </view>
+  </view>
+
+  <!-- 参数对比区域 -->
+  <scroll-view scroll-y class="compare-content" wx:if="{{leftCar && rightCar}}">
+    <view class="compare-section" wx:for="{{compareCategories}}" wx:key="category">
+      <view class="section-header">{{item.category}}</view>
+      
+      <view class="param-item" wx:for="{{item.params}}" wx:key="name" wx:for-item="param">
+        <view class="param-name">{{param.name}}</view>
+        <view class="param-values">
+          <text class="{{param.winner === 'left' ? 'highlight' : ''}}">
+            {{leftCar[param.key]}}{{param.unit}}
+          </text>
+          <text class="{{param.winner === 'right' ? 'highlight' : ''}}">
+            {{rightCar[param.key]}}{{param.unit}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 车型选择弹窗 -->
+  <view class="car-select-modal" wx:if="{{showCarSelector}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text>选择车型</text>
+        <image src="/assets/icons/close.png" bindtap="hideCarSelector"/>
+      </view>
+      
+      <view class="brand-filter">
+        <input type="text" placeholder="搜索品牌车型" bindinput="onSearchInput"/>
+      </view>
+
+      <scroll-view scroll-y class="car-list">
+        <view class="car-item" wx:for="{{filteredCars}}" wx:key="id"
+              bindtap="onCarSelect" data-car="{{item}}">
+          <image class="car-thumb" src="{{item.image}}" mode="aspectFit"/>
+          <view class="car-info">
+            <text class="car-brand">{{item.brand}}</text>
+            <text class="car-model">{{item.name}}</text>
+            <text class="car-price">{{item.price}}万起</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view> 

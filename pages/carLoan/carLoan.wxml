@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="form-container">
+    <view class="form-item">
+      <text class="label">车辆总价（万元）</text>
+      <input type="digit" value="{{totalPrice}}" bindinput="onTotalPriceInput" placeholder="请输入车辆总价"/>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">首付比例</text>
+      <picker bindchange="onDownPaymentChange" value="{{downPaymentIndex}}" range="{{downPaymentRatios}}">
+        <view class="picker">{{downPaymentRatios[downPaymentIndex]}}%</view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">贷款期限</text>
+      <picker bindchange="onLoanTermChange" value="{{loanTermIndex}}" range="{{loanTerms}}">
+        <view class="picker">{{loanTerms[loanTermIndex]}}年</view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">年利率（%）</text>
+      <input type="digit" value="{{interestRate}}" bindinput="onInterestRateInput" placeholder="请输入年利率"/>
+    </view>
+
+    <button class="calculate-btn" bindtap="calculateLoan">计算月供</button>
+  </view>
+
+  <view class="result-container" wx:if="{{showResult}}">
+    <view class="result-item">
+      <text class="label">首付金额</text>
+      <text class="value">¥{{downPayment}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">贷款金额</text>
+      <text class="value">¥{{loanAmount}}</text>
+    </view>
+    <view class="result-item highlight">
+      <text class="label">每月还款</text>
+      <text class="value">¥{{monthlyPayment}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">支付利息</text>
+      <text class="value">¥{{totalInterest}}</text>
+    </view>
+  </view>
+</view> 

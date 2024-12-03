@@ -1,0 +1,66 @@
+<view class="container">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
+       markers="{{markers}}" scale="14" show-location="true"
+       style="width: 100%; height: calc(100vh - 180px);">
+  </map>
+
+  <view class="search-bar">
+    <input type="text" placeholder="搜索停车场" bindinput="onSearchInput"/>
+    <view class="filter-btn" bindtap="showFilter">
+      <image src="/assets/icons/filter.png" mode="aspectFit"/>
+    </view>
+    <button bindtap="searchNearby" class="search-btn">搜索附近</button>
+  </view>
+
+  <scroll-view scroll-y class="parking-list" wx:if="{{parkingLots.length > 0}}">
+    <view class="parking-item" wx:for="{{parkingLots}}" wx:key="id" bindtap="selectParking" data-parking="{{item}}">
+      <view class="parking-info">
+        <view class="name-status">
+          <text class="name">{{item.name}}</text>
+          <text class="status {{item.status === '空闲' ? 'available' : 'busy'}}">{{item.status}}</text>
+        </view>
+        <text class="address">{{item.address}}</text>
+        <text class="distance">距离{{item.distance}}km</text>
+      </view>
+      <view class="price-info">
+        <text class="price">¥{{item.price}}</text>
+        <text class="unit">/小时</text>
+        <text class="spaces">剩余{{item.availableSpaces}}个车位</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 筛选弹窗 -->
+  <view class="filter-modal" wx:if="{{showFilterModal}}">
+    <view class="filter-content">
+      <view class="filter-header">
+        <text>筛选条件</text>
+        <image src="/assets/icons/close.png" bindtap="hideFilter"/>
+      </view>
+      <view class="filter-section">
+        <text class="section-title">价格区间</text>
+        <view class="price-range">
+          <input type="digit" placeholder="最低价" value="{{minPrice}}" bindinput="onMinPriceInput"/>
+          <text>-</text>
+          <input type="digit" placeholder="最高价" value="{{maxPrice}}" bindinput="onMaxPriceInput"/>
+        </view>
+      </view>
+      <view class="filter-section">
+        <text class="section-title">停车场类型</text>
+        <view class="type-options">
+          <view class="type-item {{item.selected ? 'selected' : ''}}" 
+                wx:for="{{parkingTypes}}" 
+                wx:key="id"
+                bindtap="toggleParkingType"
+                data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      <view class="filter-buttons">
+        <button class="reset-btn" bindtap="resetFilter">重置</button>
+        <button class="confirm-btn" bindtap="applyFilter">确定</button>
+      </view>
+    </view>
+  </view>
+</view> 
