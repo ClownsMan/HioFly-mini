@@ -16,23 +16,4 @@
       <text>{{item.name}}</text>
     </view>
   </view>
-  
-  <!-- 在原有代码基础上添加 -->
-  <view class="car-model-container">
-    <view class="car-viewer" 
-          bindtouchstart="touchStart" 
-          bindtouchmove="touchMove" 
-          bindtouchend="touchEnd">
-      <image class="car-image" 
-             src="{{carImages[currentImageIndex]}}" 
-             mode="aspectFit"/>
-    </view>
-    <!-- 可选的控制按钮 -->
-    <view class="control-buttons">
-      <view class="rotate-hint">
-        <image src="/assets/icons/rotate.png" mode="aspectFit"/>
-        <text>左右滑动旋转车辆</text>
-      </view>
-    </view>
-  </view>
 </view> 
