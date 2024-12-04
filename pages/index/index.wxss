@@ -1,14 +1,67 @@
-.banner {
-  width: 100%;
-  height: 200px;
+.container {
+  min-height: 100vh;
+  background: #253334;
+  box-sizing: border-box;
+}
+.content {
+  padding: 20px;
+}
+
+.car-card {
+  background: #f7f3f0;
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+  display: flex;
+  height: 160px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.plate-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.car-model {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.mileage {
+  font-size: 12px;
+  color: #999;
+}
+
+.car-action {
+  display: flex;
+  align-items: center;
+}
+
+.action-text {
+  font-size: 14px;
+  color: #666;
+  margin-right: 4px;
+}
+
+.arrow-icon {
+  width: 200px;
 }
 
 .swiper {
-  width: 92%;
+  width: 100%;
   height: 100px;
-  margin: 15px auto;
   border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .swiper image {
@@ -16,80 +69,28 @@
   height: 100%;
 }
 
-.quick-tools {
-  width: 92%;
-  margin: 20px auto;
+.quick-actions {
+  background: #000000;
+  border-radius: 12px;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
 }
 
-.tool-item {
+.action-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.tool-item image {
+.action-icon {
   width: 40px;
   height: 40px;
   margin-bottom: 8px;
 }
 
-.tool-item text {
+.action-name {
   font-size: 12px;
-  color: var(--text-color);
+  color: #333;
 }
-
-.car-model-container {
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(to bottom, #225353, #1a3f3f);
-  position: relative;
-  overflow: hidden;
-}
-
-.car-viewer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.car-image {
-  width: 90%;
-  height: 180px;
-  transition: transform 0.1s ease;
-}
-
-.control-buttons {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.rotate-hint {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-}
-
-.rotate-hint image {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-}
-
-.rotate-hint text {
-  color: #fff;
-  font-size: 12px;
-} 

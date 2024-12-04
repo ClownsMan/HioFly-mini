@@ -1,19 +1,32 @@
 <view class="container">
-  <!-- 顶部海鸥汽车图片 -->
-  <image class="banner" src="/assets/images/seagull-car.png" mode="aspectFill"/>
+  <!-- 顶部车辆信息卡片 -->
+  <view class="car-card">
+    <view class="car-info">
+      <text class="car-model">海鸥 305km 自由版</text>
+      <text class="mileage">总里程 30,000 km</text>
+    </view>
+    <view class="car-action">
+      <!-- <text class="action-text">更换车辆</text> -->
   
-  <!-- 轮播图 -->
-  <swiper class="swiper" indicator-dots autoplay circular>
-    <swiper-item wx:for="{{swiperList}}" wx:key="id">
-      <image src="{{item.image}}" mode="aspectFill"/>
-    </swiper-item>
-  </swiper>
-  
-  <!-- 快捷工具栏 -->
-  <view class="quick-tools">
-    <view class="tool-item" wx:for="{{quickTools}}" wx:key="id" bindtap="navigateToTool" data-url="{{item.url}}">
-      <image src="{{item.icon}}"/>
-      <text>{{item.name}}</text>
+      <image class="arrow-icon" src="/assets/images/car-template.png" mode="aspectFit"/>
+    </view>
+  </view>
+
+  <view class="content">
+    <!-- 轮播图 -->
+    <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}"
+          indicator-color="rgba(255, 255, 255, 0.3)"
+          indicator-active-color="#ffffff">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+        <image src="{{item.image}}" mode="aspectFill"/>
+      </swiper-item>
+    </swiper>
+    <!-- 快捷功能区 -->
+    <view class="quick-actions">
+      <view class="action-item" wx:for="{{quickActions}}" wx:key="id" bindtap="navigateTo" data-url="{{item.url}}">
+        <image class="action-icon" src="{{item.icon}}" mode="aspectFit"/>
+        <text class="action-name">{{item.name}}</text>
+      </view>
     </view>
   </view>
 </view> 
