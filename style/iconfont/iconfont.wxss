@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('//at.alicdn.com/t/c/font_4770173_vn1ho4rd0xh.ttf?t=1710747891387') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-car-loan:before {
+  content: "\e600";
+}
+
+.icon-charging:before {
+  content: "\e601";
+}
+
+.icon-parking:before {
+  content: "\e602";
+}
+
+.icon-compare:before {
+  content: "\e603";
+}
+
+.icon-home:before {
+  content: "\e604";
+}
+
+.icon-tools:before {
+  content: "\e605";
+}
+
+.icon-profile:before {
+  content: "\e606";
+}
+

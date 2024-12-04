@@ -23,4 +23,13 @@
 
 .tab-bar-item.active {
   color: #FFD700;
+}
+
+.tab-bar-item .iconfont {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.tab-bar-item text:last-child {
+  font-size: 12px;
 } 

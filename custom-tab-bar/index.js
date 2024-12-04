@@ -4,18 +4,15 @@ Component({
     list: [{
       pagePath: "/pages/index/index",
       text: "首页",
-      iconPath: "/assets/icons/home.png",
-      selectedIconPath: "/assets/icons/home-active.png"
+      icon: "icon-shouye"
     }, {
       pagePath: "/pages/tools/tools",
       text: "工具",
-      iconPath: "/assets/icons/tools.png",
-      selectedIconPath: "/assets/icons/tools-active.png"
+      icon: "icon-gongju"
     }, {
       pagePath: "/pages/profile/profile",
       text: "我的",
-      iconPath: "/assets/icons/profile.png",
-      selectedIconPath: "/assets/icons/profile-active.png"
+      icon: "icon-31wode"
     }]
   },
   methods: {
