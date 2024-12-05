@@ -4,15 +4,18 @@ Component({
     list: [{
       pagePath: "/pages/index/index",
       text: "首页",
-      icon: "icon-shouye"
+      imageUnActive: "/assets/icons/home-unactive.png",
+      image: "/assets/icons/home.png",
     }, {
       pagePath: "/pages/tools/tools",
       text: "工具",
-      icon: "icon-gongju"
+      imageUnActive: "/assets/icons/tools-unactive.png",
+      image: "/assets/icons/tools.png"
     }, {
       pagePath: "/pages/profile/profile",
       text: "我的",
-      icon: "icon-31wode"
+      imageUnActive: "/assets/icons/mine-unactive.png",
+      image: "/assets/icons/mine.png"
     }]
   },
   methods: {
@@ -20,9 +23,11 @@ Component({
       const data = e.currentTarget.dataset;
       const url = data.path;
       wx.switchTab({ url });
-      this.setData({
-        selected: data.index
-      });
+      setTimeout(() => {
+        this.setData({
+          selected: data.index
+        });
+      }, 0)
     }
   }
 }); 

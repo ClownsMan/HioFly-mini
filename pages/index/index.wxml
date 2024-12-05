@@ -24,7 +24,8 @@
     <!-- 快捷功能区 -->
     <view class="quick-actions">
       <view class="action-item" wx:for="{{quickActions}}" wx:key="id" bindtap="navigateTo" data-url="{{item.url}}">
-        <image class="action-icon" src="{{item.icon}}" mode="aspectFit"/>
+        <!-- <image class="action-icon" src="{{item.icon}}" mode="aspectFit"/> -->
+        <text class="iconfont {{ item.iconClass }}"></text>
         <text class="action-name">{{item.name}}</text>
       </view>
     </view>

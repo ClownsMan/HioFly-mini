@@ -1,8 +1,11 @@
 <view class="container">
   <view class="tools-grid">
     <view class="tool-item" wx:for="{{tools}}" wx:key="id" bindtap="navigateToTool" data-url="{{item.url}}">
-      <image src="{{item.icon}}"/>
-      <text>{{item.name}}</text>
+      <image src="{{item.icon}}" mode="aspectFill"/>
+      <view class="action-name">
+        <text class="iconfont {{ item.iconClass }}"></text>
+        <text class="">{{item.name}}</text>
+      </view>
     </view>
   </view>
 </view> 
