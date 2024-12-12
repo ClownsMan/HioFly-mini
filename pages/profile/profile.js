@@ -1,6 +1,44 @@
 Page({
   data: {
-    userInfo: null
+    userInfo: null,
+    functions: [
+      {
+        id: 1,
+        name: '送货订单',
+        icon: 'icon-order',
+        url: '/pages/orders/orders'
+      },
+      {
+        id: 2,
+        name: '我的订单',
+        icon: 'icon-myorder',
+        url: '/pages/myOrders/myOrders'
+      },
+      {
+        id: 3,
+        name: '我的卡券',
+        icon: 'icon-coupon',
+        url: '/pages/coupons/coupons'
+      },
+      {
+        id: 4,
+        name: '我的活动',
+        icon: 'icon-activity',
+        url: '/pages/activities/activities'
+      },
+      {
+        id: 5,
+        name: '我的地址',
+        icon: 'icon-address',
+        url: '/pages/address/address'
+      },
+      {
+        id: 6,
+        name: '关注公众号',
+        icon: 'icon-wechat',
+        url: '/pages/wechat/wechat'
+      }
+    ]
   },
 
   login() {

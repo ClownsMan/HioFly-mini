@@ -11,5 +11,4 @@ page {
 .container {
   min-height: 100vh;
   background-color: var(--bg-color);
-  padding-bottom: 76px;
 } 

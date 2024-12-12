@@ -1,43 +1,72 @@
+.container {
+  min-height: 100vh;
+  background: #22333b;
+  // background: #619b8a;
+}
+
 .user-info {
-  background: var(--primary-color);
-  padding: 30px 20px;
+  padding: 40px 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-right: 15px;
-  border: 2px solid #fff;
+  border: 3px solid #fff;
+  margin-bottom: 15px;
+}
+
+.user-detail {
+  text-align: center;
 }
 
 .nickname {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
 }
 
-.function-list {
-  margin-top: 20px;
-  background: #fff;
+.location {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.function-grid {
+  background: #f7f3f0;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .function-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 15px 20px;
-  border-bottom: 1px solid #f5f5f5;
 }
 
-.function-item text {
-  font-size: 16px;
-  color: var(--text-color);
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 
-.function-item image {
-  width: 20px;
-  height: 20px;
+.iconfont {
+  font-size: 24px;
+  color: #333;
+}
+
+.function-name {
+  font-size: 12px;
+  color: #666;
 } 
